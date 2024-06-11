@@ -32,12 +32,15 @@ write_csv(the_nineties, file="babynames_90s.csv")
 
 #Add, commit, and push your files to GitHub.     
 #RStudio pull from GitHub. Is it already up to date?
-
-  
 #Now that everything is up to date, make a visualisation of you and your team member’s names for a year of your choice.
-
+bb_team<-bb_names %>% 
+  filter(name %in% c("Emily", "Linnea", "Adri", "Nicole"))
+ggplot(data=bb_team %>% filter(year=="2017"))+
+  geom_col(aes(x=name, y=n))
 
 #Make a visual that looks at your name over time. What happens if you color by sex?
-
+ggplot(data=bb_team %>% filter(name=="Nicole"))+
+  geom_line(aes(x=year, y=n, color=sex))+
+  labs(title="Nicole over time", x="Count", y="Year", color="Sex")
  
 #Don’t forget to stage/add, commit, and push your hardwork to GitHub!
